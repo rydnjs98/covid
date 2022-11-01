@@ -4,45 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible">
+    android:visibility="visible"
+    tools:visibility="visible">
 
     <WebView
         android:id="@+id/webview1"
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </WebView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="290dp" />
+        android:orientation="vertical"
+        android:visibility="visible">
 
-    <Button
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:background="@drawable/support_covid"
-        android:foreground="@drawable/support_covid"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/covid_document"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:backgroundTint="?attr/colorControlActivated"
+            android:text="전자 문진표 작성" />
 
-    <Button
-        android:id="@+id/imageView5"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginBottom="540dp"
-        android:foreground="@drawable/support_covid3"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-1dp" />
+        <Button
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/support_covid"
+            android:foreground="@drawable/support_covid" />
 
-    <Button
-        android:id="@+id/covid_document"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginTop="530dp"
-        android:layout_marginBottom="100dp"
-        android:text="전자 문진표 작성"
-        app:layout_constraintBottom_toTopOf="@+id/webview1"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        tools:layout_editor_absoluteX="120dp" />
+        <Button
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginBottom="540dp"
+            android:foreground="@drawable/support_covid3"
+            android:text="Button" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

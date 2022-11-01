@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/two"
-        tools:layout_editor_absoluteX="-27dp"
-        tools:layout_editor_absoluteY="102dp" />
+    <RelativeLayout
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
