@@ -78,7 +78,7 @@ public class support_java extends AppCompatActivity {
                 btn5.setVisibility(View.GONE);
                 btn6.setVisibility(View.GONE);
                 //여기가 api 적용전 파일
-
+                //11-1 수정
 
             }
         });
