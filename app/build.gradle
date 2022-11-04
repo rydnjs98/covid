@@ -1,5 +1,7 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -8,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.covid"
-        minSdk 30
+        minSdk 21
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -22,11 +24,28 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    viewBinding {
+        enabled = true
+    }
+    // Android Studio 4.0 이상
+    buildFeatures {
+        viewBinding = true
+    }
+    dataBinding{
+        enabled = true
+    }
 }
+
+
 
 dependencies {
 
@@ -40,4 +59,11 @@ dependencies {
     //---------------------api 추가 부분-----------------
     implementation fileTree(include:['*.jar'],dir:'libs')
     implementation files('libs/libDaumMapAndroid.jar')
+    //--------------------자바 코틀린 같이 사용------------
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.0.0'
+    //--------------------RestAPI관련-------------------
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'androidx.core:core-ktx:1.7.0'
 }
