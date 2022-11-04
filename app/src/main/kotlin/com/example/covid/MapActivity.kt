@@ -1,14 +1,14 @@
 package com.example.covid
+
 import KakaoAPI
-import ListLayout
 import ListAdapter
+import ListLayout
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.covid.databinding.ActivityMainBinding
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import retrofit2.Call
@@ -26,42 +26,47 @@ import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
 import net.daum.mf.map.api.MapView
+import com.example.covid.databinding.ActivityMapBinding
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 
 
 
-
-class Submap : AppCompatActivity() {
+class MapActivity : AppCompatActivity() {
 
     companion object {
         const val BASE_URL = "https://dapi.kakao.com/"
         const val API_KEY = "KakaoAK f633fabaa674a0042f15252f28f9b272"  // REST API 키
     }
 
-    private lateinit var binding : ActivityMainBinding
+
+    private lateinit var binding : ActivityMapBinding
     private val listItems = arrayListOf<ListLayout>()   // 리사이클러 뷰 아이템
     private val listAdapter = ListAdapter(listItems)    // 리사이클러 뷰 어댑터
     private var pageNumber = 1      // 검색 페이지 번호
     private var keyword = ""        // 검색 키워드
     private val ACCESS_FINE_LOCATION = 1000
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        binding = ActivityMapBinding.inflate(layoutInflater)
+        //val view = binding.root
+        setContentView(R.layout.activity_map)
+
 
         // 리사이클러 뷰
-        binding.rv_list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-       binding.rv_list.adapter = listAdapter
+        binding.rvList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.rvList.adapter = listAdapter
         // 리스트 아이템 클릭 시 해당 위치로 이동
         listAdapter.setItemClickListener(object: ListAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
                 val mapPoint = MapPoint.mapPointWithGeoCoord(listItems[position].y, listItems[position].x)
-                binding.map_view.setMapCenterPointAndZoomLevel(mapPoint, 1, true)
+                binding.mapView.setMapCenterPointAndZoomLevel(mapPoint, 1, true)
             }
         })
+
+
 
 
 
@@ -126,7 +131,7 @@ class Submap : AppCompatActivity() {
         if (!searchResult?.documents.isNullOrEmpty()) {
             // 검색 결과 있음
             listItems.clear()                   // 리스트 초기화
-            binding.map_view.removeAllPOIItems() // 지도의 마커 모두 제거
+            binding.mapView.removeAllPOIItems() // 지도의 마커 모두 제거
             for (document in searchResult!!.documents) {
                 // 결과를 리사이클러 뷰에 추가
                 val item = ListLayout(document.place_name,
@@ -145,7 +150,7 @@ class Submap : AppCompatActivity() {
                     markerType = MapPOIItem.MarkerType.BluePin
                     selectedMarkerType = MapPOIItem.MarkerType.RedPin
                 }
-                binding.map_view.addPOIItem(point)
+                binding.mapView.addPOIItem(point)
             }
             listAdapter.notifyDataSetChanged()
 
@@ -223,11 +228,11 @@ class Submap : AppCompatActivity() {
 
     // 위치추적 시작
     private fun startTracking() {
-        binding.map_view.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+        binding.mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
     }
 
     // 위치추적 중지
     private fun stopTracking() {
-        binding.map_view.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
+        binding.mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
     }
 }

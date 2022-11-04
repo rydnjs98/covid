@@ -25,12 +25,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn3.setOnClickListener(this);
 
 
-
-
-
-
-
-
     }
 
     @Override//버튼 클릭시 이벤트 1,2,3
@@ -40,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
         }
       else if(view.getId()==R.id.button_move2){
-            Intent intent = new Intent(MainActivity.this, map_java.class);
+            Intent intent = new Intent(MainActivity.this, MapActivity.class);
             startActivity(intent);
         }
         else if(view.getId()==R.id.button_move3){
