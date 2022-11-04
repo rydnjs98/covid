@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android-extensions'
+
 }
 
 android {
@@ -45,14 +45,7 @@ android {
     dataBinding{
         enabled = true
     }
-    splits {
-        abi{
-            enable true
-            reset()
-            include 'x86' , 'armeabi-v7a','x86_64'
-            universalApk true
-        }
-    }
+
 }
 
 

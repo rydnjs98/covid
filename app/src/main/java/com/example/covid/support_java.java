@@ -69,7 +69,7 @@ public class support_java extends AppCompatActivity {
 
 
                 webview1.setWebViewClient(new WebViewClient());
-                webview1.loadUrl("https://covid19m.kdca.go.kr/KP/35700092");
+                webview1.loadUrl("https://covid19m.kdca.go.kr/KP/epq/35700092A");
 
                 ActionBar actionBar=getSupportActionBar();
                 actionBar.hide();
