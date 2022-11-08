@@ -74,6 +74,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
@@ -89,7 +90,7 @@
         <activity android:name=".cvd2" /> <!-- 카카오 API 및 앱키 삭제하거나 수정하지 말것. -->
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="d23d359f85ef8dbd75d4675bceb7876d" />
+            android:value="9d80d17e13a03a6a44b7e8feca0cea28" />
     </application>
 
 </manifest>
