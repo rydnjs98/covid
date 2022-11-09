@@ -1,3 +1,7 @@
+import android.content.Context
+import android.location.Location
+import android.location.LocationManager
+import androidx.core.content.ContextCompat.getSystemService
 import com.example.covid.ResultSearchKeyword
 import retrofit2.Call
 import retrofit2.http.GET
