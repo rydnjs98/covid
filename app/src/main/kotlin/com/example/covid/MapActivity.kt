@@ -36,7 +36,7 @@ open class MapActivity : AppCompatActivity() {
 
     companion object {
         const val BASE_URL = "https://dapi.kakao.com/"
-        const val API_KEY = "KakaoAK f01369257eb69e720630beba5c80b2dc"  // REST API 키
+        const val API_KEY = "KakaoAK 581b9cafe497a83c8990bcc6f57c5137"  // REST API 키
     }
 
 
