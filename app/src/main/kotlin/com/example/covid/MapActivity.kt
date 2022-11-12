@@ -56,19 +56,12 @@ open class MapActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMapBinding.inflate(layoutInflater)
         permissionCheck()
+        startTracking()
         val view = binding.root
         setContentView(view)
 
 
-        // 중심 좌표 이동 내 위치로
-        val lm : LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val userNowLocation: Location? = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-        val uLatitude = userNowLocation?.latitude
-        val uLongitude = userNowLocation?.longitude
 
-        binding.mapView.setMapCenterPoint(uLatitude?.let { uLongitude?.let { it1 ->
-            MapPoint.mapPointWithGeoCoord(it, it1)
-        } },true)
 
         // 리사이클러 뷰
         binding.rvList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
