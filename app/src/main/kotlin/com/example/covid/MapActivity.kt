@@ -83,7 +83,7 @@ open class MapActivity : AppCompatActivity() {
         //검색 버튼
         binding.btnSearch.setOnClickListener {
             keyword = binding.etSearchField.text.toString()
-            pageNumber = 1
+            binding.tvPageNumber.text = pageNumber.toString()
             searchKeyword(keyword,xpoint,ypoint, 10000,pageNumber)
 
 
@@ -284,6 +284,8 @@ open class MapActivity : AppCompatActivity() {
         val userNowLocation: Location? = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
         val uLatitude = userNowLocation?.latitude
         val uLongitude = userNowLocation?.longitude
+        this@MapActivity.xpoint = uLongitude.toString() // 추가 된 부분 삭제하면 작동 함
+        this@MapActivity.ypoint = uLatitude.toString()
         Toast.makeText(this," $uLatitude $uLongitude",Toast.LENGTH_SHORT).show()
         //11월 7일 추가된 부분 2
 
