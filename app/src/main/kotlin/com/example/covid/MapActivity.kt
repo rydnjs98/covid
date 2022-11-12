@@ -55,6 +55,7 @@ open class MapActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         binding = ActivityMapBinding.inflate(layoutInflater)
+        permissionCheck()
         val view = binding.root
         setContentView(view)
 
@@ -66,9 +67,7 @@ open class MapActivity : AppCompatActivity() {
         val uLongitude = userNowLocation?.longitude
 
         binding.mapView.setMapCenterPoint(uLatitude?.let { uLongitude?.let { it1 ->
-            MapPoint.mapPointWithGeoCoord(it,
-                it1
-            )
+            MapPoint.mapPointWithGeoCoord(it, it1)
         } },true)
 
         // 리사이클러 뷰
